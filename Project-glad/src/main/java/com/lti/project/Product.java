@@ -30,8 +30,8 @@ package com.lti.project;
 	   int productCost;
 		
 	   //List<Integer> emiDetails=new ArrayList();
-		@Column(name="product_emiDetails")	
-	   String emiDetails;
+		//@Column(name="product_emiDetails")	
+	  //String emiDetails;
 
 		public int getProductId() {
 			return productId;
@@ -65,11 +65,11 @@ package com.lti.project;
 			this.productCost = productCost;
 		}
 
-		public String getEmiDetails() {
+	/*	public String getEmiDetails() {
 			return emiDetails;
 		}
 
 		public void setEmiDetails(String emiDetails) {
 			this.emiDetails = emiDetails;
-		}   
+		}   */
 	}
