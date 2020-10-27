@@ -19,12 +19,12 @@ public class ProjectTest {
 	@Test
 	public void addACustomer() {
 		Customer customer = new Customer();
-		customer.setCustomerName("SRT");
+		customer.setCustomerName("SARIT");
 		customer.setPhoneNumber("80808080");
 		customer.setUserName("Srt");
 		customer.setPassword("srt123");
 		customer.setSelectBank("HDFC");
-		customer.setIfscCode("HDFC0001");
+		customer.setIfscCode("HDFC000002");
 		customer.setAccept(false);
 		dao.addACustomer(customer);
 	}
