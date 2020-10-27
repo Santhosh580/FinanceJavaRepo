@@ -19,12 +19,12 @@ public class ProjectTest {
 	@Test
 	public void addACustomer() {
 		Customer customer = new Customer();
-		customer.setCustomerName("Xyz");
-		customer.setPhoneNumber("9876543210");
-		customer.setUserName("Xyz");
-		customer.setPassword("xyz");
-		customer.setSelectBank("SBI");
-		customer.setIfscCode("SBIN0001");
+		customer.setCustomerName("SRT");
+		customer.setPhoneNumber("80808080");
+		customer.setUserName("Srt");
+		customer.setPassword("srt123");
+		customer.setSelectBank("HDFC");
+		customer.setIfscCode("HDFC0001");
 		customer.setAccept(false);
 		dao.addACustomer(customer);
 	}
@@ -33,8 +33,8 @@ public class ProjectTest {
 	public void addACard() {
 		Card card = new Card();
 		card.setCardType("Platinum");
-		card.setMaxAmount(40000);
-		card.setAmountAvailable(40000);
+		card.setMaxAmount(100000);
+		card.setAmountAvailable(100000);
 		Customer customer = dao.findACustomerById(1023);
 		if (customer == null) {
 			System.out.println("Customer not found");
@@ -79,8 +79,8 @@ public class ProjectTest {
 	@Test
 	public void makeOrder() {
 		Order orders = new Order();
-		Card card = dao.findACard(3002);
-		Product p = dao.findAProduct(9994);
+		Card card = dao.findACard(3003);
+		Product p = dao.findAProduct(9993);
 		orders.setEmiTimePeriod(4);
 		if (card == null) {
 			System.out.println("Card doesnot exist");
@@ -104,7 +104,7 @@ public class ProjectTest {
 
 	@Test
 	public void OrderWithCard() {
-		Card card = dao.findACard(3002);
+		Card card = dao.findACard(3003);
 		List<Order> or = dao.viewOrderByCard(card);
 		Iterator<Order> items = or.iterator();
 		while (items.hasNext()) {
@@ -114,5 +114,10 @@ public class ProjectTest {
 							+ o.getProducts().getProductDescription() + " " + o.getEmiPaid() + " " + o.getEmiLeft());
 		}
 
+	}
+	@Test
+	public void CheckLogin() {
+		dao.userLogin("Srt", "srt123");
+		
 	}
 }
