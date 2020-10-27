@@ -1,18 +1,20 @@
 package com.lti.project;
 
 import java.util.List;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tbl_order")
 public class Order {
 	@Id
 	@SequenceGenerator(name = "orderSeq", initialValue = 1, allocationSize = 1)
@@ -24,9 +26,18 @@ public class Order {
 	Card cardNo;
 	int emiTimePeriod;
 	double emiPaid;
+	public Card getCardNo() {
+		return cardNo;
+	}
+
+	public void setCardNo(Card cardNo) {
+		this.cardNo = cardNo;
+	}
+
 	double emiLeft;
 
-	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+	@ManyToOne
+	@JoinColumn(name="product_Id")
 	Product products;
 
 	public int getOrderId() {
@@ -45,13 +56,7 @@ public class Order {
 		OrderId = orderId;
 	}
 
-	public Card getCardNo() {
-		return cardNo;
-	}
-
-	public void setCardNo(Card cardNo) {
-		this.cardNo = cardNo;
-	}
+	
 
 	public double getEmiPaid() {
 		return emiPaid;

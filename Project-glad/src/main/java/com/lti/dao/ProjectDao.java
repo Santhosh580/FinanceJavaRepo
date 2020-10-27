@@ -25,6 +25,12 @@ public class ProjectDao {
 		tx = em.getTransaction();
 	}
 	
+	public void addAProduct(Product product){
+		  tx.begin();
+		  em.merge(product);
+		  tx.commit();
+	}
+	
 	public void addACustomer(Customer customer){
 		tx.begin();
 		em.merge(customer);
@@ -41,32 +47,33 @@ public class ProjectDao {
 	public Customer findACustomerById(int id){
 		return em.find(Customer.class, id);
 	}
-	
-	public void addAProduct(Product product){
-		  tx.begin();
-		  em.merge(product);
-		  tx.commit();
-		  em.close();
-	}
+	public Product findAProduct(int productId) {
+        return em.find(Product.class, productId);
+    }
+    public Card findACard(int cardNo) {
+        return em.find(Card.class, cardNo);
+    }
 	
 	public List<Product> viewAllProducts(){
 		Query query = em.createQuery("select p from Product p", Product.class);
 		return query.getResultList();
 		}
+	public List<Card> viewAllCard(){
+		Query query = em.createQuery("select c from Card c", Card.class);
+		return query.getResultList();
+	}
 	
 	public void makeOrder(Order orders) {
         tx.begin();
         em.merge(orders);
         tx.commit();
     }
-    public List<Order> viewOrderBy(Card cardNo) {
-        String jpql="select o from Order o where o.cardNo=cn";
+    public List<Order> viewOrderByCard(Card card) {
+        String jpql="select o from Order o where o.cardNo=:cn";
         Query query = em.createQuery(jpql,Order.class);
-        query.setParameter("cn",cardNo);
+        query.setParameter("cn",card);
         return query.getResultList();
     }
-    public Product findAProduct(int productId) {
-        return em.find(Product.class, productId);
-    }
+    
 	
 }

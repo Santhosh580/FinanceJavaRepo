@@ -23,10 +23,16 @@ public class Customer {
 	String password;
 	String selectBank;
 	String ifscCode;
-	boolean accept = true;
+	boolean accept;
 	
-	@OneToOne(mappedBy="Customer")
-	Card card;
+//	public Card getCard() {
+//		return card;
+//	}
+//	public void setCard(Card card) {
+//		this.card = card;
+//	}
+//	@OneToOne(mappedBy="Customer")
+//	Card card;
 	
 	public int getCustomerId() {
 		return customerId;

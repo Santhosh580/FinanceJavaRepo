@@ -1,10 +1,14 @@
 package com.lti.project;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -24,7 +28,10 @@ public class Card {
 	@OneToOne
 	@JoinColumn(name="customer_id")
 	Customer customer;
-
+	
+//	@OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
+//	List<Order> order;
+	
 	public int getCardNumber() {
 		return cardNumber;
 	}
@@ -32,6 +39,8 @@ public class Card {
 	public void setCardNumber(int cardNumber) {
 		this.cardNumber = cardNumber;
 	}
+
+	
 
 	public String getCardType() {
 		return cardType;
@@ -64,6 +73,14 @@ public class Card {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+
+//	public List<Order> getOrder() {
+//		return order;
+//	}
+//
+//	public void setOrder(List<Order> order) {
+//		this.order = order;
+//	}
 	
 
 }

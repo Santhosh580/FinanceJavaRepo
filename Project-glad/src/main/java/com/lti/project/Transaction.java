@@ -22,29 +22,29 @@ public class Transaction {
 
 	int transaction_id;
 
-	@ManyToOne
-	@JoinColumn(name = "card_number")
-	Card card;
-	@OneToMany(mappedBy = "transaction")
-	List<Order> order;
+//	@ManyToOne
+//	@JoinColumn(name = "card_number")
+//	Card card;
+//	@OneToMany(mappedBy = "transaction")
+//	List<Order> order;
 	public int getTransaction_id() {
 		return transaction_id;
 	}
 	public void setTransaction_id(int transaction_id) {
 		this.transaction_id = transaction_id;
 	}
-	public Card getCard() {
-		return card;
-	}
-	public void setCard(Card card) {
-		this.card = card;
-	}
-	public List<Order> getOrder() {
-		return order;
-	}
-	public void setOrder(List<Order> order) {
-		this.order = order;
-	}
+//	public Card getCard() {
+//		return card;
+//	}
+//	public void setCard(Card card) {
+//		this.card = card;
+//	}
+//	public List<Order> getOrder() {
+//		return order;
+//	}
+//	public void setOrder(List<Order> order) {
+//		this.order = order;
+//	}
 
 }
 
